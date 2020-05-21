@@ -1,11 +1,16 @@
+{# note: for each interface run #}
 {% for interface in interfaces %}
+{# note: Name interface from interface var #}
 interface {{ interface }}
+{# note: Name interface from interface ipaddress and subnet #}
 ip address {{ interface.ipaddress }} {{ interface.subnet }}
 no shutdown
+{# note: If uplink is true, set as trunk #}
 {% if interface.uplink is True %}
 switchport mode trunk
 {% endif %}
 
+{# note: If VLAN is not false, set vlan access up for that port #}
 {% if interface.VLAN not False %}
 switchport mode access vlan {{ interface.VLAN }}
 {% endif %}
