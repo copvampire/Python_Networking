@@ -1,0 +1,49 @@
+{
+"209.165.200.238": {
+        "Hostname": "R2",
+        "interfaces": {
+            "S0/0/0": {
+                "ipaddress": "172.16.1.2",
+                "netmask": "255.255.255.252",
+                "uplink": false,
+                "VLAN": false
+                },
+            "S0/0/1": {
+                "ipaddress": "172.16.1.2",
+                "netmask": "255.255.255.252",
+                "uplink": false,
+                "VLAN": false
+                }
+        }
+    },
+    "172.16.1.1": {
+        "Hostname": "R1",
+        "interfaces": {
+            "S0/0/0": {
+                "ipaddress": "172.16.1.2",
+                "netmask": "255.255.255.252",
+                "uplink": false,
+                "VLAN": false
+                },
+            "f0/5": {
+                "uplink": true,
+                "VLAN": false
+                }
+        }
+    },
+    "192.168.99.2": {
+        "Hostname": "Switch0",
+        "interfaces": {
+            "f0/5": {
+                "uplink": true,
+                "VLAN": false
+                },
+            "F0/6": {
+                "ipaddress": "172.16.1.2",
+                "netmask": "255.255.255.252",
+                "uplink": false,
+                "VLAN": "21"
+                }
+        }
+    }
+}
