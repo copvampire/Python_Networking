@@ -82,11 +82,11 @@ for hosts in HOSTS:
             tn.write("switchport mode trunk \n")
             tn.write("exit\n")
 
-tn.write("wr\n")
-tn.read_until("Destination filename [startup-config]?")
-tn.write("\n")
-tn.read_until("[OK]")
-tn.write("end\n")
-tn.write("exit\n")
+    tn.write("wr\n")
+    tn.read_until("Destination filename [startup-config]?")
+    tn.write("\n")
+    tn.read_until("[OK]")
+    tn.write("end\n")
+    tn.write("exit\n")
 
 print tn.read_all()
