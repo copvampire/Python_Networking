@@ -20,7 +20,7 @@ for hosts in HOSTS:
     ##used to auto add a creditinals for ssh connection
     ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     #Set up SSH connection to the host
-    ssh_client.connect(hostname=hosts,username=user,password=password)
+    ssh_client.connect(hostname=hosts,username=username,password=password)
 
     print("Successful connection", hosts)
 
