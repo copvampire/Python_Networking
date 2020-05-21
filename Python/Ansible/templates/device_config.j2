@@ -1,7 +1,15 @@
-hostname {{ hostname }}
+hostname {{ ansible_hostname }}
 banner motd \#Unauthorised access is strictly prohibited\#
 no ip domain-lookup
 ip domain-name cisco.com
 crypto key generate rsa general-keys modulus 2048
 line vty 0 4
 transport input all
+
+
+
+
+
+
+
+
