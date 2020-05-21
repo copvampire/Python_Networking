@@ -52,16 +52,15 @@ HOSTS = {
 user = "admin"
 password = "cisco"
 
-tn = telnetlib.Telnet(HOSTS)
-
-tn.read_until("Username: ")
-tn.write(user + "\n")
-if password:
-    tn.read_until("Password: ")
-    tn.write(password + "\n")
-
 for hosts in HOSTS:
+    tn = telnetlib.Telnet(hosts)
 
+    tn.read_until("Username: ")
+    tn.write(user + "\n")
+    if password:
+        tn.read_until("Password: ")
+        tn.write(password + "\n")
+    
     tn.write("conf t\n")
     tn.write("hostname {} \n").format(hosts["Hostname"])
     tn.write("banner motd \#Unauthorised access is strictly prohibited\#\n")
