@@ -1,7 +1,8 @@
 import paramiko
 import time
-import json
+import json ##Import JSON
 
+##Load JSON varaible and bind to variable HOSTS
 HOSTS = json.load(open("./Datafiles/DataFile.json", "r") )
 
 username = "admin"
@@ -49,5 +50,5 @@ for hosts in HOSTS:
     output = remote_connection.recv(65535)
     print(output)
 
-    ssh_client.close
+    ssh_client.close()
 
