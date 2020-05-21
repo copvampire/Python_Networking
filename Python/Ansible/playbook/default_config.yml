@@ -5,27 +5,45 @@
   connection: network_cli
 
   tasks:
+  {# Create config files for devices using the interface configuration jinja2 templates,
+     then save in temptfiles directory #}
     - name: generate default config
       template:
         src: "/etc/ansible/jinja2-template/device.j2"
         dest: "/etc/ansible/tempfiles/{{ inventory_hostname }}_device.txt"
+  {# Push configuration to device and if changes, call the handler "do wr" #}
     - name: push configuration
       ios_config:
         src: /etc/ansible/tempfiles/{{ inventory_hostname }}_device.txt
         notify: do wr
         when: device.changed
 
+  {# Create config files for devices using the default configuration jinja2 templates,
+     then save in temptfiles directory #}
     - name: generate interface config
       template:
         src: "/etc/ansible/jinja2-template/interface.j2"
         dest: "/etc/ansible/tempfiles/{{ inventory_hostname }}_interface.txt"
+  {# Push configuration to device and if changes, call the handler "do wr" #}
     - name: push configuration
       ios_config:
         src: /etc/ansible/tempfiles/{{ inventory_hostname }}_interface.txt
         notify: do wr
         when: interface.changed
 
+  {# Save device configuration #}
   handlers:
     - name: do wr
       ios_command:
         commands: wr
+
+
+
+
+
+
+
+
+
+
+
