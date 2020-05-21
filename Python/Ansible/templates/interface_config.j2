@@ -1,0 +1,13 @@
+{% for interface in interfaces %}
+interface {{ interface }}
+ip address {{ interface.ipaddress }} {{ interface.subnet }}
+no shutdown
+{% if interface.uplink is True %}
+switchport mode trunk
+{% endif %}
+
+{% if interface.VLAN not False %}
+switchport mode access vlan {{ interface.VLAN }}
+{% endif %}
+
+{% endfor %}
