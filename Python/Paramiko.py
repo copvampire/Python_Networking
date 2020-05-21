@@ -17,7 +17,7 @@ HOSTS = {
                 "VLAN": False
                 },
             "S0/0/1": {
-                "ipaddress": "172.16.1.2",
+                "ipaddress": "172.16.2.2",
                 "netmask": "255.255.255.252",
                 "uplink": False,
                 "VLAN": False
@@ -28,7 +28,7 @@ HOSTS = {
         "Hostname": "R1",
         "interfaces": {
             "S0/0/0": {
-                "ipaddress": "172.16.1.2",
+                "ipaddress": "172.16.1.1",
                 "netmask": "255.255.255.252",
                 "uplink": False,
                 "VLAN": False
@@ -48,8 +48,6 @@ HOSTS = {
                 "VLAN": False
                 },
             "F0/6": {
-                "ipaddress": "172.16.1.2",
-                "netmask": "255.255.255.252",
                 "uplink": False,
                 ##VLAN 21 uses this interface
                 "VLAN": "21"
@@ -57,6 +55,7 @@ HOSTS = {
         }
     }
 }
+
 ##Cisco login credentials
 user = "admin"
 password = "cisco"
