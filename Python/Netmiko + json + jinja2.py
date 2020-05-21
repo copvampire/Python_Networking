@@ -3,11 +3,11 @@ from netmiko import Netmiko
 import time
 import json
 
-HOSTS = json.load(open("DataFile.json", "r") )
+HOSTS = json.load(open("./Datafiles/DataFile.json", "r") )
 
 ENV = Environment(loader=FileSystemLoader('.'))
-deviceConfig = ENV.get_template("device_config.j2")
-interfaceConfig = ENV.get_template("interface_config.j2")
+deviceConfig = ENV.get_template("./Jinja2Templates/device_config.j2")
+interfaceConfig = ENV.get_template("./Jinja2Templates/interface_config.j2")
     
 for hosts in HOSTS:
     net_connect = Netmiko(hosts, username="admin", password="cisco", device_type="cisco_ios")

@@ -2,7 +2,7 @@ import paramiko
 import time
 import json
 
-HOSTS = json.load(open("DataFile.json", "r") )
+HOSTS = json.load(open("./Datafiles/DataFile.json", "r") )
 
 username = "admin"
 password = "cisco"
