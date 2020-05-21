@@ -1,0 +1,7 @@
+---
+interface:
+  Serial0/0/0:
+    uplink: true
+    vlan: false
+  Serial0/0/1:
+    vlan: "21"

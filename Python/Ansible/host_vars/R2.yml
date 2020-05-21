@@ -1,0 +1,12 @@
+---
+interface:
+  Serial0/0/0:
+    ipaddress: 172.16.1.2
+    netmask: 255.255.255.252
+    uplink: false
+    vlan: false
+  Serial0/0/1:
+    ipaddress: 172.16.1.2
+    netmask: 255.255.255.252
+    uplink: false
+    vlan: false

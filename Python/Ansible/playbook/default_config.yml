@@ -5,20 +5,27 @@
   connection: network_cli
 
   tasks:
-    - name: Render default configuration
+    - name: generate default config
       template:
-        src: "/etc/Ansible/templates/device_config.j2"
-        dest: "/etc/Ansible/temp_Configs/{{ inventory_hostname }}_default.conf"
+        src: "/etc/ansible/jinja2-template/device.j2"
+        dest: "/etc/ansible/tempfiles/{{ inventory_hostname }}_device.txt"
+    - name: push configuration
+      ios_config:
+        src: /etc/ansible/tempfiles/{{ inventory_hostname }}_device.txt
+        notify: do wr
+        when: device.changed
 
-    - name: Render interface configurations
+    - name: generate interface config
       template:
-        src: "/etc/Ansible/templates/interface_config.j2"
-        dest: "/etc/Ansible/temp_Configs/{{ inventory_hostname }}_int.conf"
+        src: "/etc/ansible/jinja2-template/interface.j2"
+        dest: "/etc/ansible/tempfiles/{{ inventory_hostname }}_interface.txt"
+    - name: push configuration
+      ios_config:
+        src: /etc/ansible/tempfiles/{{ inventory_hostname }}_interface.txt
+        notify: do wr
+        when: interface.changed
 
-    - name: Configure device with config
-      cli_config:
-        config: "/etc/Ansible/temp_Configs/{{ inventory_hostname }}_default.conf"
-
-    - name: Configure interfaces of device with config
-      cli_config:
-        config: "/etc/Ansible/temp_Configs/{{ inventory_hostname }}_int.conf"
+  handlers:
+    - name: do wr
+      ios_command:
+        commands: wr

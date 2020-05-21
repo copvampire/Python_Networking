@@ -1,13 +1,17 @@
-{% for interface in interfaces %}
-interface {{ interface }}
-ip address {{ interface.ipaddress }} {{ interface.subnet }}
+{% if interface is defined %}
+{% for i in interface %}
+interface {{ i }}
+{% if _i['ip'] is defined %}
+ip address {{ _i['ip'] }} {{ _i['mask'] }}
+{% endif %}
 no shutdown
-{% if interface.uplink is True %}
+{% if _i['uplink'] is True %}
 switchport mode trunk
 {% endif %}
 
-{% if interface.VLAN not False %}
-switchport mode access vlan {{ interface.VLAN }}
+{% if _i['uplink'] not False %}
+switchport mode access vlan {{ _i['VLAN'] }}
 {% endif %}
 
 {% endfor %}
+{% endif %}
